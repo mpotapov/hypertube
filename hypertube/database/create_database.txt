@@ -1,0 +1,37 @@
+CREATE TABLE IF NOT EXISTS movies (
+    `id` int(11) NOT NULL,
+    `url` varchar(300),
+    `imdb_code` varchar(300),
+    `title` varchar(300),
+    `slug` varchar(300),
+    `year` int(11),
+    `rating` int(11),
+    `runtime` int(11),
+    `summary` text,
+    `description_full` text,
+    `language` varchar(300),
+    `mpa_rating` varchar(300),
+    `background_image_original` varchar(300),
+    `medium_cover_image` varchar(300),
+    `large_cover_image` varchar(300),
+    PRIMARY KEY (id)
+    );
+
+    CREATE TABLE IF NOT EXISTS torrents (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `movie_id` int(11) NOT NULL,
+    `url` varchar(300),
+    `hash` varchar(300),
+    `quality` varchar(300),
+    `size` varchar(300),
+    PRIMARY KEY (id),
+    FOREIGN KEY (movie_id) REFERENCES movies(id)
+    );
+
+        CREATE TABLE IF NOT EXISTS genres (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `movie_id` int(11) NOT NULL,
+    `genre` varchar(300),
+    PRIMARY KEY (id),
+    FOREIGN KEY (movie_id) REFERENCES movies(id)
+    );
